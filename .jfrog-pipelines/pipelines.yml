@@ -25,7 +25,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: step_1
+      - name: step_11
         type: Bash
         configuration:
           inputResources:
