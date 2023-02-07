@@ -25,14 +25,6 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: step_11
-        type: Bash
-        configuration:
-          inputResources:
-            - name: myFirstRepo
-        execution:
-          onExecute:
-            - printenv
   - name: pipeline_scheduled_triggers2
     steps:
       - name: step_2
