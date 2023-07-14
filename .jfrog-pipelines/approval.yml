@@ -1,0 +1,10 @@
+pipelines:
+  - name: pipelines_approval
+    steps:
+      - name: approval_step
+        type: Bash
+        configuration:
+          requiresApproval: true
+        execution:
+          onExecute:
+            - echo "Hello"
