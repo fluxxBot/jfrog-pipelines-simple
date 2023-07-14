@@ -8,3 +8,6 @@ pipelines:
         execution:
           onExecute:
             - echo "Hello"
+            - echo $step_approved_by
+            - echo $step_approved_comment
+            - echo $step_approved_at
