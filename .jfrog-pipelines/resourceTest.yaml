@@ -80,13 +80,6 @@ pipelines:
       - name: twoCol_step2_ag1
         type: Bash
         configuration:
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - '13'
           inputSteps:
             - name: oneCol_step1_ag1
           outputResources:
@@ -183,6 +176,7 @@ pipelines:
             - if [ $runStepOverride != "runValueoverridenInStepExecutionSection" ]; then echo "runStepOverride-$runStepOverride is not overriden from step section"; return 1; fi
             - if [ $runNoOverride != "runStepVariable" ]; then echo "runNoOverride-$runNoOverride is from step section"; return 1; fi
             - echo stepNodeId=$step_node_id stepNodeName=$step_node_name
+            - echo "runId = " $res_res_output_test_runID
             
       - name: threeCol_step1_ag2
         type: Bash
@@ -199,6 +193,7 @@ pipelines:
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi
             - add_run_variables agroup2=$step_node_name
             - echo stepNodeId=$step_node_id stepNodeName=$step_node_name
+            - echo "runId = " $res_res_output_test_runID
             
       - name: threeCol_step2_ag2
         type: Bash
@@ -214,6 +209,7 @@ pipelines:
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi
             - if [ $agroup2 != $step_node_name ]; then echo "Step didnt run on same node in an affinity group"; return 1; fi
             - echo stepNodeId=$step_node_id stepNodeName=$step_node_name
+            - echo "runId = " $res_res_output_test_runID
                     
       - name: threeCol_step3_noAG
         type: Bash
@@ -227,6 +223,7 @@ pipelines:
             - if [ $JUST_FES != "options" ]; then echo "JUST_FES-$JUST_FES is from pipeline section readonly"; return 1; fi
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi
             - echo stepNodeId=$step_node_id stepNodeName=$step_node_name
+            - echo "runId = " $res_res_output_test_runID
        
       - name: threeCol_step4_ag4
         type: Bash
