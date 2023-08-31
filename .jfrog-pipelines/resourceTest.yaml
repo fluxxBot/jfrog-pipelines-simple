@@ -176,7 +176,7 @@ pipelines:
             - if [ $runStepOverride != "runValueoverridenInStepExecutionSection" ]; then echo "runStepOverride-$runStepOverride is not overriden from step section"; return 1; fi
             - if [ $runNoOverride != "runStepVariable" ]; then echo "runNoOverride-$runNoOverride is from step section"; return 1; fi
             - echo stepNodeId=$step_node_id stepNodeName=$step_node_name
-            - echo "runId = " $res_res_output_test_runID
+            - echo "runId = " $res_res_output_step_runID
             
       - name: threeCol_step1_ag2
         type: Bash
