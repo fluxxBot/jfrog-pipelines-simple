@@ -92,7 +92,7 @@ pipelines:
             - if [ $JUST_FES != "options" ]; then echo "JUST_FES-$JUST_FES is from pipeline section readonly"; return 1; fi
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi 
             - if [ $agroup1 != $step_node_name ]; then echo "Step didnt run on same node in an affinity group"; return 1; fi
-            - write_output res_output_test test=$commitSha runID=$current_runid
+            - write_output res_output_test test=$commitSha runID=$run_id
             - echo stepNodeId=$step_node_id stepNodeName=$step_node_name
             
       - name: twoCol_step3_ag1
@@ -137,7 +137,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - write_output res_output_step test=$commitSha runID=$current_runid
+            - write_output res_output_step test=$commitSha runID=$run_id
             - if [ $TEST_ENV != "pipelines" ]; then echo "TEST_ENV-$TEST_ENV is from pipeline section readonly"; return 1; fi
             - if [ $JUST_FES != "options" ]; then echo "JUST_FES-$JUST_FES is from pipeline section readonly"; return 1; fi
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi
@@ -164,7 +164,7 @@ pipelines:
             - if [ $stepOverride != "valueToBeOverridenInNextStepNotInEnv" ]; then echo "stepOverride-$stepOverride is from step section"; return 1; fi
             - stepOverride="valueoverridenInStepExecutionSection"
             - printenv
-            - write_output res_output_step2 test=$commitSha runID=$current_runid
+            - write_output res_output_step2 test=$commitSha runID=$run_id
             - if [ $TEST_ENV != "pipelines" ]; then echo "TEST_ENV-$TEST_ENV is from pipeline section readonly"; return 1; fi
             - if [ $JUST_FES != "options" ]; then echo "JUST_FES-$JUST_FES is from pipeline section readonly"; return 1; fi
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi
@@ -235,7 +235,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - if [ $res_res_output_step_runID != "$current_runid" ]; then echo "res_res_output_step_runID-$res_res_output_step_runID is from output resource"; return 1; fi
+            - if [ $res_res_output_step_runID != "$run_id" ]; then echo "res_res_output_step_runID-$res_res_output_step_runID is from output resource"; return 1; fi
             - if [ $TEST_ENV != "pipelines" ]; then echo "TEST_ENV-$TEST_ENV is from pipeline section readonly"; return 1; fi
             - if [ $JUST_FES != "options" ]; then echo "JUST_FES-$JUST_FES is from pipeline section readonly"; return 1; fi
             - if [ $LOL_FOO != "test" ]; then echo "LOL_FOO-$LOL_FOO is from pipeline section readonly"; return 1; fi
