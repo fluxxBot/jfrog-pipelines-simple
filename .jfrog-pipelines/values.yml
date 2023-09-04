@@ -1,3 +1,3 @@
 myRepo:
-  gitProvider: int_github
+  gitProvider: dummuy
   path: kanishkguptagit/jfrog-pipelines-simple-example
