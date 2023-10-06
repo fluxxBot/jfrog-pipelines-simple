@@ -2,7 +2,7 @@ template: true
 valuesFilePath: ./values.yml
 
 resources:
-  - name: myFirstRepo
+  - name: gitRepoTest
     type: GitRepo
     configuration:
       gitProvider: {{ .Values.myRepo.gitProvider }}
@@ -21,7 +21,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: myFirstRepo
+            - name: gitRepoTest
         execution:
           onExecute:
             - res_<resource_name>_resourcePath
