@@ -1,0 +1,28 @@
+template: true 
+valuesFilePath: ./values.yml
+
+resources:
+  - name: myFirstRepo
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: propertyBag
+    type: PropertyBag
+    configuration:
+      foo: bar
+      foo1: bar1
+      foo2: bar2
+
+pipelines:
+  - name: pinned_version_test
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: myFirstRepo
+        execution:
+          onExecute:
+            - res_<resource_name>_resourcePath
+            -  ls
