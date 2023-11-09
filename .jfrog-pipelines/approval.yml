@@ -9,7 +9,9 @@ pipelines:
       - name: approval_step
         type: Bash
         configuration:
-          requiresApproval: true
+          requiresApproval:
+            approvers:
+              - admin
           inputSteps:
             - name: start_approval_pipeline
         execution:
