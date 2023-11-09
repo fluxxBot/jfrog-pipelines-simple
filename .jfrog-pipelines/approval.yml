@@ -1,30 +1,15 @@
 pipelines:
   - name: pipelines_approval
     steps:
-      - name: start_approval_pipeline
-        type: Bash
-        execution:
-          onExecute:
-            - echo "Working fine"
       - name: approval_step
         type: Bash
         configuration:
           requiresApproval:
             approvers:
               - admin
-          inputSteps:
-            - name: start_approval_pipeline
         execution:
           onExecute:
             - echo "Hello"
             - echo $step_approved_by
             - echo $step_approved_comment
             - echo $step_approved_at
-      - name: end_approval_pipeline
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: approval_step
-        execution:
-          onExecute:
-            - echo "Working fine"  
